@@ -2,10 +2,12 @@
 import { Navigation } from 'react-native-navigation';
 import registerScreens, { POSTS_PAGE, FRIENDS_PAGE, ALBUMS_PAGE, TODOS_PAGE, PROFILE_PAGE} from './screens';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { defaultFont } from '../styles/fonts';
 
 const ICON_SIZE = 25;
 const BUTTON_TEXT_COLOR = 'black';
 const BUTTON_FONT_SIZE = 10;
+const TOPBAR_FONT_SIZE = 20;
 
 registerScreens();
 
@@ -40,7 +42,9 @@ export default initAppScreens = () => {
                                     options: {
                                         topBar: {
                                             title: {
-                                                text: 'Latest Posts'
+                                                text: 'Latest Posts',
+                                                fontFamily: defaultFont,
+                                                fontSize: TOPBAR_FONT_SIZE,
                                             }
                                         }
                                     }
@@ -49,6 +53,7 @@ export default initAppScreens = () => {
                             options: {
                                 bottomTab:{
                                     fontSize: BUTTON_FONT_SIZE,
+                                    fontFamily: defaultFont,
                                     text: POSTS_PAGE,
                                     icon: postsIcon
                                 }
@@ -63,7 +68,9 @@ export default initAppScreens = () => {
                                     options: {
                                         topBar: {
                                             title: {
-                                                text: 'Friends'
+                                                text: 'Friends',
+                                                fontFamily: defaultFont,
+                                                fontSize: TOPBAR_FONT_SIZE
                                             }
                                         }
                                     }
@@ -72,6 +79,7 @@ export default initAppScreens = () => {
                             options: {
                                 bottomTab:{
                                     fontSize: BUTTON_FONT_SIZE,
+                                    fontFamily: defaultFont,
                                     text: FRIENDS_PAGE,
                                     icon: friendsIcon
                                 }
@@ -86,7 +94,9 @@ export default initAppScreens = () => {
                                     options: {
                                         topBar: {
                                             title: {
-                                                text: 'Albums'
+                                                text: 'Albums',
+                                                fontFamily: defaultFont,
+                                                fontSize: TOPBAR_FONT_SIZE
                                             }
                                         }
                                     }
@@ -95,6 +105,7 @@ export default initAppScreens = () => {
                             options: {
                                 bottomTab:{
                                     fontSize: BUTTON_FONT_SIZE,
+                                    fontFamily: defaultFont,
                                     text: ALBUMS_PAGE,
                                     icon: albumsIcon
                                 }
@@ -109,7 +120,9 @@ export default initAppScreens = () => {
                                     options: {
                                         topBar: {
                                             title: {
-                                                text: 'Todo List'
+                                                text: 'Todo List',
+                                                fontFamily: defaultFont,
+                                                fontSize: TOPBAR_FONT_SIZE
                                             }
                                         }
                                     }
@@ -118,6 +131,7 @@ export default initAppScreens = () => {
                             options: {
                                 bottomTab:{
                                     fontSize: BUTTON_FONT_SIZE,
+                                    fontFamily: defaultFont,
                                     text: TODOS_PAGE,
                                     icon: todosIcon
                                 }
@@ -132,7 +146,9 @@ export default initAppScreens = () => {
                                     options: {
                                         topBar: {
                                             title: {
-                                                text: 'Profile'
+                                                text: 'Profile',
+                                                fontFamily: defaultFont,
+                                                fontSize: TOPBAR_FONT_SIZE
                                             }
                                         }
                                     }
@@ -141,6 +157,7 @@ export default initAppScreens = () => {
                             options: {
                                 bottomTab:{
                                     fontSize: BUTTON_FONT_SIZE,
+                                    fontFamily: defaultFont,
                                     text: PROFILE_PAGE,
                                     icon: profileIcon
                                 }
