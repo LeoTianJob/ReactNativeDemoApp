@@ -1,16 +1,34 @@
 const initState = {
     loginUser: {
-        id: null,
-
+        id: 0,
+        name: "",
+        username: "",
+        email: "",
+        address: {
+            street: null,
+            suite: null,
+            city: null,
+            zipcode: null,
+            geo: {
+                lat: null,
+                lng: null
+            }
+        },
+        phone: "",
+        website: "",
+        company: {
+            name: "",
+            catchPhrase: "",
+            bs: ""
+        }
     }
 }
 
 const reducer = (state = initState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         default:
             return state;
     }
-
 };
 
 export default reducer;

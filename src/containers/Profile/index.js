@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, SafeAreaView } from 'react-native';
+import { connect } from  'react-redux';
 import axios from 'axios';
 
 import Avatar from '../../components/Avatar';
@@ -17,16 +18,16 @@ class Profile extends Component {
 
     componentDidMount() {
         // Assume the current login user's id = 1
-        axios.get('https://jsonplaceholder.typicode.com/users/1')
-            .then(res => {
-                const { data } = res;
-                if (this.state.profileInfo === null) {
-                    this.setState({ profileInfo: data })
-                }
-            })
-            .catch(error => {
-                console.log('Fetching user infomation failed')
-            })
+        // axios.get('https://jsonplaceholder.typicode.com/users/1')
+        //     .then(res => {
+        //         const { data } = res;
+        //         if (this.state.profileInfo === null) {
+        //             this.setState({ profileInfo: data })
+        //         }
+        //     })
+        //     .catch(error => {
+        //         console.log('Fetching user infomation failed')
+        //     })
     }
 
     render() {

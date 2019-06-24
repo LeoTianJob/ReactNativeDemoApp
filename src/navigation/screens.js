@@ -1,5 +1,7 @@
 import { Navigation } from 'react-native-navigation';
 
+import withRedux from '../hoc/withRedux';
+
 import Posts from '../containers/Posts';
 import Friends from '../containers/Friends';
 import Albums from '../containers/Albums';
@@ -14,11 +16,11 @@ export const TODOS_PAGE = 'Todos';
 export const PROFILE_PAGE = 'Profile'
 
 registerScreens = () => {
-    Navigation.registerComponent(POSTS_PAGE, () => Posts);
-    Navigation.registerComponent(FRIENDS_PAGE, () => Friends);
-    Navigation.registerComponent(ALBUMS_PAGE, () => Albums);
-    Navigation.registerComponent(TODOS_PAGE, () => Todos);
-    Navigation.registerComponent(PROFILE_PAGE, () => Profile);
+    Navigation.registerComponent(POSTS_PAGE, () => withRedux(Posts));
+    Navigation.registerComponent(FRIENDS_PAGE, () => withRedux(Friends));
+    Navigation.registerComponent(ALBUMS_PAGE, () => withRedux(Albums));
+    Navigation.registerComponent(TODOS_PAGE, () => withRedux(Todos));
+    Navigation.registerComponent(PROFILE_PAGE, () => withRedux(Profile));
 }
 
 export default registerScreens;
