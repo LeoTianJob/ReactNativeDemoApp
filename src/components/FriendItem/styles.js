@@ -12,7 +12,7 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderColor: darkGrey,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center'
     },
     userInfoStyle: {
         flex: 1,
@@ -21,7 +21,6 @@ export default StyleSheet.create({
     },
     itemStyle: {
         marginVertical: 5,
-        backgroundColor: 'green',
         fontFamily: defaultFont,
         fontSize: 16
     }
