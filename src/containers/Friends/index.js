@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Textm, SafeAreaView } from 'react-native';
+import { Text, SafeAreaView } from 'react-native';
 
 class Friends extends Component {
     render() {
