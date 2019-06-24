@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import { Text, SafeAreaView } from 'react-native';
 
+import Avatar from '../../components/Avatar';
+
 class Profile extends Component {
+
+    componentDidMount() {
+        // Assume the current login user's id = 1
+        
+    }
+
     render() {
         return (
             <SafeAreaView>
-                <Text> This is Profile page</Text>
+                <Avatar />
+                <Text>Test</Text>
             </SafeAreaView>
         );
     }
