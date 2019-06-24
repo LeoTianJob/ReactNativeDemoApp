@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Textm, SafeAreaView } from 'react-native';
 
 class Friends extends Component {
     render() {
         return (
-            <Text> This is Friends page</Text>
+            <SafeAreaView>
+                <Text> This is Friends page</Text>
+            </SafeAreaView>
         );
     }
 }

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, SafeAreaView } from 'react-native';
 
 class Todos extends Component {
     render() {
         return (
-            <Text> This is Todos page</Text>
+            <SafeAreaView>
+                <Text> This is Todos page</Text>
+            </SafeAreaView>
         );
     }
 }
