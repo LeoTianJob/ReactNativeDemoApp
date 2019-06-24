@@ -38,7 +38,8 @@ export default initAppScreens = () => {
                 bottomTabs: {
                     options: {
                         bottomTabs: {
-                            backgroundColor: BG_COLOR
+                            backgroundColor: BG_COLOR,
+                            currentTabIndex: 1
                         }
                     },
                     id: 'BottomTabsId',

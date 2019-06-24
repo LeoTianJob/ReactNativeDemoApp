@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Text, SafeAreaView } from 'react-native';
 
+import FriendItem from '../../components/FriendItem';
+
 import styles from './styles';
 class Friends extends Component {
     render() {
@@ -8,7 +10,8 @@ class Friends extends Component {
 
         return (
             <SafeAreaView style={container}>
-                <Text> This is Friends page</Text>
+                <FriendItem />
+                <FriendItem />
             </SafeAreaView>
         );
     }
