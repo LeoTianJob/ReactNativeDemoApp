@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Avatar from '../../components/Avatar';
 
+import styles from './styles';
 class Profile extends Component {
 
     constructor(props) {
@@ -19,8 +20,8 @@ class Profile extends Component {
         axios.get('https://jsonplaceholder.typicode.com/users/1')
             .then(res => {
                 const { data } = res;
-                if (this.state.profileInfo === null){
-                    this.setState({ profileInfo: data})
+                if (this.state.profileInfo === null) {
+                    this.setState({ profileInfo: data })
                 }
             })
             .catch(error => {
@@ -29,8 +30,10 @@ class Profile extends Component {
     }
 
     render() {
+        const { container } = styles;
+
         return (
-            <SafeAreaView>
+            <SafeAreaView style={container}>
                 <Avatar />
                 <Text>{JSON.stringify(this.state.profileInfo)}</Text>
             </SafeAreaView>

@@ -4,9 +4,12 @@ import { Text, SafeAreaView } from 'react-native';
 import styles from './styles'
 
 class Albums extends Component {
+
     render() {
+        const { container } = styles;
+
         return (
-            <SafeAreaView style={{}}>
+            <SafeAreaView style={container}>
                 <Text> This is Albums page</Text>
             </SafeAreaView>
         );
