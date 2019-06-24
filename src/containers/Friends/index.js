@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, SafeAreaView } from 'react-native';
+import { Text, View } from 'react-native';
 
 import FriendItem from '../../components/FriendItem';
 
@@ -9,10 +9,10 @@ class Friends extends Component {
         const { container } = styles;
 
         return (
-            <SafeAreaView style={container}>
+            <View>
                 <FriendItem />
                 <FriendItem />
-            </SafeAreaView>
+            </View>
         );
     }
 }

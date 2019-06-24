@@ -3,11 +3,11 @@ import registerScreens, { POSTS_PAGE, FRIENDS_PAGE, ALBUMS_PAGE, TODOS_PAGE, PRO
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { defaultFont } from '../styles/fonts';
-import { honoluluBlue, etonBlue, americanGreen, lightGrey } from '../styles/colors'
+import { honoluluBlue, etonBlue, americanGreen, lightGrey, iceberg } from '../styles/colors'
 
 const ICON_SIZE = 25;
-const BUTTON_TEXT_COLOR = etonBlue;
-const BUTTON_TEXT_SELECTED_COLOR = americanGreen;
+const BUTTON_TEXT_COLOR = iceberg;
+const BUTTON_TEXT_SELECTED_COLOR = honoluluBlue;
 const BUTTON_FONT_SIZE = 10;
 const TOPBAR_TEXT_COLOR = honoluluBlue;
 const TOPBAR_FONT_SIZE = 20;

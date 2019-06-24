@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from  'react-redux';
-import { Text, SafeAreaView } from 'react-native';
+import { Text, View } from 'react-native';
 
 import styles from './styles';
 class Todos extends Component {
@@ -9,9 +9,9 @@ class Todos extends Component {
         const { container } = styles;
 
         return (
-            <SafeAreaView style={container}>
+            <View style={container}>
                 <Text> This is Todos page</Text>
-            </SafeAreaView>
+            </View>
         );
     }
 }

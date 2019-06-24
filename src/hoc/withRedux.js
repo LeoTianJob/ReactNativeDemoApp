@@ -7,12 +7,12 @@ import axiosMiddleware from 'redux-axios-middleware';
 const { width, height } = Dimensions.get('window');
 
 const withRedux = (WrappedComponent) => {
-    const {container, bgImgStyle} = styles;
+    const {safearea, bgImgStyle} = styles;
     
     return props => {
         return (
-            <ImageBackground source={require('../assets/images/bgImg.jpg')} style={bgImgStyle} >
-                <SafeAreaView style={container}>
+            <ImageBackground source={require('../assets/images/bgImg2.jpg')} style={bgImgStyle} >
+                <SafeAreaView style={safearea}>
                     <WrappedComponent {...props} />
                 </SafeAreaView>
             </ImageBackground>
@@ -21,14 +21,13 @@ const withRedux = (WrappedComponent) => {
 };
 
 const styles = StyleSheet.create({
-    container: {
+    safearea: {
         flex: 1, 
-        backgroundColor: 'rgba(164, 208, 160, 0.9)'
+        backgroundColor: 'rgba(164, 208, 160, 0.8)' // etonBlue
     },
     bgImgStyle: {
         width, 
-        height, 
-        backgroundColor: 'rgba(164, 208, 160, 0.9)'
+        height
     }
 })
 

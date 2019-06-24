@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, SafeAreaView } from 'react-native';
+import { Text, View } from 'react-native';
 import { connect } from  'react-redux';
 import axios from 'axios';
 
@@ -34,10 +34,10 @@ class Profile extends Component {
         const { container } = styles;
 
         return (
-            <SafeAreaView style={container}>
+            <View>
                 <Avatar />
                 <Text>{JSON.stringify(this.state.profileInfo)}</Text>
-            </SafeAreaView>
+            </View>
         );
     }
 }
