@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, Alert } from 'react-native';
 import axios from '../../utilities/axios';
 
 import FriendItem from '../../components/FriendItem';
@@ -16,14 +16,16 @@ class Friends extends Component {
         this.state = {
             friendsList: null,
             start: 0,
-            limit: 10
+            limit: 10,
+            isloading: false,
+            isRefreshing: false
         }
     }
 
     componentDidMount() {
         const { start, limit, friendsList } = this.state;
         if (friendsList === null) {
-            axios.get(`/users?_start=${start}&_limit=${limit}`)
+            axios.get(`/users`)
                 .then(res => {
                     this.setState({
                         friendsList: res.data
@@ -34,9 +36,9 @@ class Friends extends Component {
                         'ERROR',
                         err,
                         [
-                            {text: 'OK', onPress: () => {}},
+                            { text: 'OK', onPress: () => { } },
                         ],
-                        {cancelable: true},
+                        { cancelable: true },
                     );
                 });
         }
@@ -50,25 +52,68 @@ class Friends extends Component {
         [street, suite, city, zipcode] = Object.keys(address).map(key => address[key]);
         return "".concat([suite, street, city, zipcode]);
     }
+    /*
+    loadMoreFriends = () => {
+        const { start, limit } = this.state;
+        console.log(`/users?_start=${start + limit}&_limit=${limit}`)
+        axios.get(`/users?_start=${start + limit}&_limit=${limit}`)
+            .then(res => {
 
+                if (res.data.length > 0) {
+                    newFriendsList = [...this.state.friendsList]
+                    newFriendsList.concat(res.data)
+                    this.setState((preState) => {
+                        return {
+                            isloading: false,
+                            start: preState.start + preState.limit,
+                            friendsList: newFriendsList
+                        }
+                    });
+                } else {
+                    Alert.alert(
+                        "",
+                        "There are no more friends!",
+                        [
+                            { text: 'OK', onPress: () => this.setState({ isloading: false}) },
+                        ],
+                        { cancelable: false },
+                    );
+                }
+
+            })
+            .catch(err => {
+                Alert.alert(
+                    'ERROR',
+                    err,
+                    [
+                        { text: 'OK', onPress: () => { } },
+                    ],
+                    { cancelable: true },
+                );
+            });
+    }
+    */
     render() {
         const { container } = styles;
         const { friendsList } = this.state;
-        
-        if (this.state.friendsList) {
-            
+
+        if (friendsList) {
+
             return (
                 <View style={container}>
                     <FlatList
                         keyExtractor={item => item.id.toString()}
                         data={friendsList}
-                        renderItem={({ item }) => <FriendItem name={item.name} address={this.formattedAddress(item.address)} />}
+                        renderItem={({ item }) => <FriendItem name={item.name} website={item.website} />}
+                        // ListFooterComponent={this.state.isloading ? <Loading size="small" /> : null}
+                        // onEndReachedThreshold={0.4}
+                        // onEndReached={() => this.loadMoreFriends()}
                     />
                 </View>
             );
         }
-        return <Loading />
 
+        return <Loading />
     }
 }
 

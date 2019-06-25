@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import PropTypes from 'prop-types';
-import { americanGreen } from '../../styles/colors';
+import { honoluluBlue } from '../../styles/colors';
 
 const loading = ({ size, color }) => {
     return (
@@ -18,7 +18,7 @@ loading.propTypes = {
 
 loading.defaultProps = {
     size: 'large',
-    color: americanGreen
+    color: honoluluBlue
 }
 
 export default loading;

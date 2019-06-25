@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -6,7 +6,7 @@ import Avatar from '../../components/Avatar';
 
 import styles from './styles'
 
-const friendItem = ({ name, address, onClick }) => {
+const friendItem = ({ name, website, onClick }) => {
 
     const { container, userInfoStyle, itemStyle } = styles;
 
@@ -15,7 +15,7 @@ const friendItem = ({ name, address, onClick }) => {
             <Avatar /> 
             <View style={userInfoStyle}>
                 <Text style={[itemStyle, {fontWeight: '600'}]}>{name}</Text>
-                <Text style={itemStyle}>{address}</Text>
+                <Text style={itemStyle}>{website}</Text>
             </View>
         </TouchableOpacity>
     );
@@ -23,13 +23,13 @@ const friendItem = ({ name, address, onClick }) => {
 
 friendItem.propTypes = {
     name: PropTypes.string,
-    address: PropTypes.string,
+    website: PropTypes.string,
     onClick: PropTypes.func
 }
 
 friendItem.defaultProps = {
     name: '',
-    address: '',
+    website: '',
     onClick: () => {}
 }
 
