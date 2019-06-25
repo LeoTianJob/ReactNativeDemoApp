@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { Text, View, ActivityIndicator } from 'react-native';
+import { Text, View, ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
 
 import Avatar from '../../components/Avatar';
+import Loading from '../../components/Loading';
 
-import { getCurrentUser } from '../../store/actions';
+import { getLoginUser, getLoginUserImg } from '../../store/actions';
 
 import styles from './styles';
-import { americanGreen } from '../../styles/colors';
 
+const LOGIN_USER_ID = 1;
 class Profile extends Component {
 
     constructor(props) {
@@ -16,25 +17,40 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchLoginUser(1);
+        const { friend } = this.props;
+
+        if (!friend) {
+            this.props.fetchLoginUserImg(LOGIN_USER_ID);
+            this.props.fetchLoginUser(LOGIN_USER_ID);
+        }
     }
 
     render() {
 
-        const { loginUser: { userInfo, loading} } = this.props;
+        const { bgImgStyle } = styles;
+        const { loginUser: { userInfo, loadingUser, loadingImg }, friend } = this.props;
 
-        console.log(userInfo)
-
-        if (loading) {
-            return <ActivityIndicator size="large" color={americanGreen}/>
-        } else {
-            return (
-                <View>
-                    <Avatar />
-                    <Text>{JSON.stringify(userInfo)}</Text>
-                </View>
-            );
+        if (loadingUser || loadingImg) {
+            return <Loading />
         }
+
+        let profileInfo = !friend ? userInfo : friend;
+
+        const {
+            name,
+            url,
+            thumbnailUrl
+        } = profileInfo;
+
+        return (
+            <View>
+                <ImageBackground source={{ uri: url }} style={bgImgStyle}>
+                    <Avatar imgUri={thumbnailUrl} />
+                </ImageBackground>
+                <Text>{JSON.stringify(profileInfo)}</Text>
+            </View>
+        );
+
     }
 }
 
@@ -42,9 +58,13 @@ const mapStateToProps = ({ loginUser }) => ({ loginUser });
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchLoginUser: (userId) => dispatch(getCurrentUser(userId)) // Assume the login user id = 1
+        fetchLoginUser: (userId) => {
+            dispatch(getLoginUser(userId))
+        },
+        fetchLoginUserImg: (userId) => {
+            dispatch(getLoginUserImg(userId))
+        }
     };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
-// export default (Profile);

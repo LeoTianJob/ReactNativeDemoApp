@@ -1,8 +1,11 @@
 import { 
-    GET_CURRENT_USER,
-    GET_CURRENT_USER_SUCCESS,
-    GET_CURRENT_USER_FAIL,
-    RESET_CURRENT_USER
+    GET_LOGIN_USER,
+    GET_LOGIN_USER_SUCCESS,
+    GET_LOGIN_USER_FAIL,
+    RESET_LOGIN_USER,
+    GET_LOGIN_USER_IMG,
+    GET_LOGIN_USER_IMG_SUCCESS,
+    GET_LOGIN_USER_IMG_FAIL
 } from '../actions/actionTypes';
 
 // Just use redux for handling user information
@@ -12,6 +15,8 @@ const initState = {
         name: "",
         username: "",
         email: "",
+        url: "",
+        thumbnailUrl: "",
         address: {
             street: null,
             suite: null,
@@ -30,27 +35,53 @@ const initState = {
             bs: ""
         }
     },
-    loading: false,
+    loadingUser: false,
+    loadingImg: false,
     error: ""
 }
 
 const reducer = (state = initState, action) => {
+    console.log('------->action')
+    console.log(action)
     switch (action.type) {
-        case GET_CURRENT_USER:
-            return {...state, loading: true};
-        case GET_CURRENT_USER_SUCCESS:
+        case GET_LOGIN_USER:
+            return {...state, loadingUser: true};
+        case GET_LOGIN_USER_SUCCESS:
             return {
-                userInfo: action.payload.data,
-                loading: false
+                ...state,
+                userInfo: {
+                    url: state.userInfo.url,
+                    thumbnailUrl: state.userInfo.thumbnailUrl,
+                    ...action.payload.data
+                },
+                loadingUser: false
             };
-        case GET_CURRENT_USER_FAIL:
+        case GET_LOGIN_USER_FAIL:
             return {
                 userInfo: initState,
-                loading: false,
+                loadingUser: false,
                 error: action.error
             };
-        case RESET_CURRENT_USER:
+        case RESET_LOGIN_USER:
             return {...initState};
+        case GET_LOGIN_USER_IMG: 
+            return {...state, loadingImg: true};
+        case GET_LOGIN_USER_IMG_SUCCESS:
+            return {
+                ...state,
+                userInfo: {
+                    ...state.userInfo,
+                    url: action.payload.data[0].url,
+                    thumbnailUrl: action.payload.data[0].thumbnailUrl
+                },
+                loadingImg: false
+            };
+        case GET_LOGIN_USER_IMG_FAIL:
+            return {
+                userInfo: initState,
+                loadingImg: false,
+                error: action.error
+            };
         default:
             return state;
     }

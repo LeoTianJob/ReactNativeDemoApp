@@ -1,8 +1,8 @@
-import { GET_CURRENT_USER } from './actionTypes';
+import { GET_LOGIN_USER, GET_LOGIN_USER_IMG } from './actionTypes';
 
-export const getCurrentUser = (userId) => {
+export const getLoginUser = (userId) => {
     return {
-        type: GET_CURRENT_USER,
+        type: GET_LOGIN_USER,
         payload: {
             request: {
                 url: `/users/${userId}`
@@ -10,3 +10,15 @@ export const getCurrentUser = (userId) => {
         }
     };
 }
+
+export const getLoginUserImg = (userId) => {
+    return {
+        type: GET_LOGIN_USER_IMG,
+        payload: {
+            request: {
+                url: `/photos?id=${userId}`
+            }
+        }
+    }
+    
+} 

@@ -2,13 +2,15 @@ import React from 'react';
 import { Image } from 'react-native';
 import PropTypes from 'prop-types';
 
-const avatar = ({ imgUri , size, disabled }) => {
+import styles from './styles';
+
+const avatar = ({ imgUri , size }) => {
     const source = imgUri ? { uri: imgUri} : require('../../assets/images/user.png');
 
     return (
         <Image 
             source={source} 
-            style={{width: size, height: size, borderRadius: size / 2}}
+            style={[styles.container, {width: size, height: size, borderRadius: size / 2}]}
         />
     );
 }
