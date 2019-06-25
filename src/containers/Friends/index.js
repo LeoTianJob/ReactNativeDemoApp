@@ -25,15 +25,19 @@ class Friends extends Component {
         if (friendsList === null) {
             axios.get(`/users?_start=${start}&_limit=${limit}`)
                 .then(res => {
-                    console.log('----res-------->');
-                    console.log(res);
                     this.setState({
                         friendsList: res.data
                     })
                 })
                 .catch(err => {
-                    console.log('----err-------->');
-                    console.log(err);
+                    Alert.alert(
+                        'ERROR',
+                        err,
+                        [
+                            {text: 'OK', onPress: () => {}},
+                        ],
+                        {cancelable: true},
+                    );
                 });
         }
     }

@@ -1,10 +1,14 @@
 import React from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { americanGreen } from '../../styles/colors';
 
-const loading = ({size, color}) => {
-    return <ActivityIndicator size={size} color={color}/>
+const loading = ({ size, color }) => {
+    return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <ActivityIndicator size={size} color={color} />
+        </View>
+    );
 }
 
 loading.propTypes = {
