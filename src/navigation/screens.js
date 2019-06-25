@@ -1,6 +1,9 @@
 import { Navigation } from 'react-native-navigation';
 
-import withRedux from '../hoc/withRedux';
+import { Provider } from 'react-redux';
+import configureStore from '../store/configureStore';
+
+import withSafeArea from '../hoc/withSafeArea';
 
 import Posts from '../containers/Posts';
 import Friends from '../containers/Friends';
@@ -13,14 +16,17 @@ export const POSTS_PAGE = 'Posts';
 export const FRIENDS_PAGE = 'Friends';
 export const ALBUMS_PAGE = 'Albums';
 export const TODOS_PAGE = 'Todos';
-export const PROFILE_PAGE = 'Profile'
+export const PROFILE_PAGE = 'Profile';
 
+const store = configureStore();
+
+// Only TODOS and PROFILE support redux, I made this on purpose, for other pages, I will use local state
 registerScreens = () => {
-    Navigation.registerComponent(POSTS_PAGE, () => withRedux(Posts));
-    Navigation.registerComponent(FRIENDS_PAGE, () => withRedux(Friends));
-    Navigation.registerComponent(ALBUMS_PAGE, () => withRedux(Albums));
-    Navigation.registerComponent(TODOS_PAGE, () => withRedux(Todos));
-    Navigation.registerComponent(PROFILE_PAGE, () => withRedux(Profile));
+    Navigation.registerComponent(POSTS_PAGE, () => withSafeArea(Posts));
+    Navigation.registerComponent(FRIENDS_PAGE, () => withSafeArea(Friends));
+    Navigation.registerComponent(ALBUMS_PAGE, () => withSafeArea(Albums));
+    Navigation.registerComponentWithRedux(TODOS_PAGE, () => withSafeArea(Todos), Provider, store);
+    Navigation.registerComponentWithRedux(PROFILE_PAGE, () => withSafeArea(Profile), Provider, store);
 }
 
 export default registerScreens;

@@ -1,45 +1,45 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
-import { connect } from  'react-redux';
-import axios from 'axios';
+import { connect } from 'react-redux';
 
 import Avatar from '../../components/Avatar';
 
+import { getCurrentUser } from '../../store/actions';
+
 import styles from './styles';
+
 class Profile extends Component {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            profileInfo: null
-        }
     }
 
     componentDidMount() {
-        // Assume the current login user's id = 1
-        // axios.get('https://jsonplaceholder.typicode.com/users/1')
-        //     .then(res => {
-        //         const { data } = res;
-        //         if (this.state.profileInfo === null) {
-        //             this.setState({ profileInfo: data })
-        //         }
-        //     })
-        //     .catch(error => {
-        //         console.log('Fetching user infomation failed')
-        //     })
+        this.props.fetchLoginUser()
     }
 
     render() {
-        const { container } = styles;
+
+        const { loginUser } = this.props;
+
+        console.log(loginUser)
 
         return (
             <View>
                 <Avatar />
-                <Text>{JSON.stringify(this.state.profileInfo)}</Text>
+                <Text>{JSON.stringify(loginUser)}</Text>
             </View>
         );
     }
 }
 
-export default Profile;
+const mapStateToProps = ({ loginUser }) => ({ userInfo: loginUser });
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchLoginUser: () => dispatch(getCurrentUser(1)) // Assume the login user id = 1
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+// export default (Profile);
