@@ -5,13 +5,13 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { defaultFont } from '../styles/fonts';
 import { honoluluBlue, etonBlue, americanGreen, lightGrey, iceberg } from '../styles/colors'
 
-const ICON_SIZE = 25;
-const BUTTON_TEXT_COLOR = iceberg;
-const BUTTON_TEXT_SELECTED_COLOR = honoluluBlue;
-const BUTTON_FONT_SIZE = 10;
-const TOPBAR_TEXT_COLOR = honoluluBlue;
-const TOPBAR_FONT_SIZE = 20;
-const BG_COLOR = lightGrey;
+export const ICON_SIZE = 25;
+export const BUTTON_TEXT_COLOR = iceberg;
+export const BUTTON_TEXT_SELECTED_COLOR = honoluluBlue;
+export const BUTTON_FONT_SIZE = 10;
+export const TOPBAR_TEXT_COLOR = honoluluBlue;
+export const TOPBAR_FONT_SIZE = 20;
+export const BG_COLOR = lightGrey;
 
 registerScreens();
 

@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { View, FlatList, Alert } from 'react-native';
+import { Navigation } from 'react-native-navigation';
+
 import axios from '../../utilities/axios';
 
 import FriendItem from '../../components/FriendItem';
 import Loading from '../../components/Loading';
 
 import styles from './styles';
+import { PROFILE_PAGE } from '../../navigation/screens';
+import { TOPBAR_FONT_SIZE, TOPBAR_TEXT_COLOR, BG_COLOR } from '../../navigation/navigation';
+import { defaultFont } from '../../styles/fonts';
+
 class Friends extends Component {
 
     // Since Todo and Profile use redux to fetch and save data, 
@@ -23,7 +29,7 @@ class Friends extends Component {
     }
 
     componentDidMount() {
-        const { start, limit, friendsList } = this.state;
+        const { friendsList } = this.state;
         if (friendsList === null) {
             axios.get(`/users`)
                 .then(res => {
@@ -48,11 +54,40 @@ class Friends extends Component {
         this.setState({ friendsList: null });
     }
 
+    onClickFriendItem = (userId) => {
+
+        const selectedFriend = this.state.friendsList.filter(user => user.id === userId)[0];
+        
+        Navigation.push(this.props.componentId, 
+            {
+                component: {
+                    name: PROFILE_PAGE,
+                    passProps: {
+                        friend: selectedFriend
+                    },
+                    options: {
+                        topBar: {
+                            title: {
+                                text: `${selectedFriend.name}`,
+                                fontFamily: defaultFont,
+                                fontSize: TOPBAR_FONT_SIZE,
+                                color: TOPBAR_TEXT_COLOR
+                            },
+                            background: {
+                                color: BG_COLOR
+                            }
+                        }
+                    }
+                }
+            })
+    }
+
+     /*
     formattedAddress = (address) => {
         [street, suite, city, zipcode] = Object.keys(address).map(key => address[key]);
         return "".concat([suite, street, city, zipcode]);
     }
-    /*
+   
     loadMoreFriends = () => {
         const { start, limit } = this.state;
         console.log(`/users?_start=${start + limit}&_limit=${limit}`)
@@ -104,10 +139,10 @@ class Friends extends Component {
                     <FlatList
                         keyExtractor={item => item.id.toString()}
                         data={friendsList}
-                        renderItem={({ item }) => <FriendItem name={item.name} website={item.website} />}
-                        // ListFooterComponent={this.state.isloading ? <Loading size="small" /> : null}
-                        // onEndReachedThreshold={0.4}
-                        // onEndReached={() => this.loadMoreFriends()}
+                        renderItem={({ item }) => <FriendItem name={item.name} website={item.website} onClick={() => this.onClickFriendItem(item.id)} />}
+                    // ListFooterComponent={this.state.isloading ? <Loading size="small" /> : null}
+                    // onEndReachedThreshold={0.4}
+                    // onEndReached={() => this.loadMoreFriends()}
                     />
                 </View>
             );
