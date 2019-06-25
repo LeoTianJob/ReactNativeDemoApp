@@ -29,7 +29,6 @@ export default StyleSheet.create({
         position: 'absolute',
         borderWidth: 3,
         borderColor: pureWhite,
-        tintColor: darkGrey,
         top: PROFILE_PHOTO_WIDTH / 2 - 64
     },
     nameContainerStyle: {
