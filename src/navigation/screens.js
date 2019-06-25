@@ -11,7 +11,6 @@ import Albums from '../containers/Albums';
 import Todos from '../containers/Todos';
 import Profile from '../containers/Profile';
 
-
 export const POSTS_PAGE = 'Posts';
 export const FRIENDS_PAGE = 'Friends';
 export const ALBUMS_PAGE = 'Albums';

@@ -14,7 +14,7 @@ const friendItem = ({ name, address, onClick }) => {
         <TouchableOpacity style={container} onPress={onClick} >
             <Avatar /> 
             <View style={userInfoStyle}>
-                <Text style={itemStyle}>{name}</Text>
+                <Text style={[itemStyle, {fontWeight: '600'}]}>{name}</Text>
                 <Text style={itemStyle}>{address}</Text>
             </View>
         </TouchableOpacity>
@@ -28,8 +28,8 @@ friendItem.propTypes = {
 }
 
 friendItem.defaultProps = {
-    name: 'USER NAME',
-    address: 'USER ADDRESS',
+    name: '',
+    address: '',
     onClick: () => {}
 }
 

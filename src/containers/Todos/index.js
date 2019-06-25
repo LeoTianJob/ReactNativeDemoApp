@@ -33,7 +33,6 @@ class Todos extends Component {
             return (
                 <View style={container}>
                     <FlatList
-                        automaticallyAdjustContentInsets={false}
                         keyExtractor={ item => item.id.toString()}
                         data={data}
                         renderItem={({ item }) => <TodoItem title={item.title} completed={item.completed} />}

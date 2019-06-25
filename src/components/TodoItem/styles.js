@@ -12,8 +12,6 @@ export default StyleSheet.create({
         height: ITEM_HEIGHT,
         marginVertical: 2,
         marginHorizontal: 5,
-        borderWidth: 1,
-        borderColor: darkGrey,
         alignItems: 'center',
         backgroundColor: pureWhite,
         shadowColor: "#000",
@@ -29,6 +27,7 @@ export default StyleSheet.create({
     titleStyle: {
         flex: 1,
         fontFamily: defaultFont,
+        fontWeight: "100",
         fontSize: 14,
         marginHorizontal: 20,
         textAlign: 'left'

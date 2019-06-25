@@ -32,6 +32,7 @@ export default StyleSheet.create({
     itemStyle: {
         marginVertical: 5,
         fontFamily: defaultFont,
-        fontSize: 16
+        fontSize: 14,
+        fontWeight: '100'
     }
 });
