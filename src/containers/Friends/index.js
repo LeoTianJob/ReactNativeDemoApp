@@ -57,29 +57,39 @@ class Friends extends Component {
     onClickFriendItem = (userId) => {
 
         const selectedFriend = this.state.friendsList.filter(user => user.id === userId)[0];
-        
-        Navigation.push(this.props.componentId, 
-            {
-                component: {
-                    name: PROFILE_PAGE,
-                    passProps: {
-                        friend: selectedFriend
-                    },
-                    options: {
-                        topBar: {
-                            title: {
-                                text: `${selectedFriend.name}`,
-                                fontFamily: defaultFont,
-                                fontSize: TOPBAR_FONT_SIZE,
-                                color: TOPBAR_TEXT_COLOR
+        axios.get(`/photos?id=${userId}`)
+            .then(res=> {
+                Navigation.push(this.props.componentId, 
+                    {
+                        component: {
+                            name: PROFILE_PAGE,
+                            passProps: {
+                                friend: { 
+                                    ...selectedFriend, 
+                                    url: res.data[0].url,
+                                    thumbnailUrl: res.data[0].thumbnailUrl
+                                }
                             },
-                            background: {
-                                color: BG_COLOR
+                            options: {
+                                topBar: {
+                                    title: {
+                                        text: `${selectedFriend.name}`,
+                                        fontFamily: defaultFont,
+                                        fontSize: TOPBAR_FONT_SIZE,
+                                        color: TOPBAR_TEXT_COLOR
+                                    },
+                                    background: {
+                                        color: BG_COLOR
+                                    }
+                                }
                             }
                         }
-                    }
-                }
+                    })
             })
+            .catch(err => {
+                
+            })
+        
     }
 
      /*
