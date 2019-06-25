@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, TextInput } from 'react-native';
 import PropTypes from 'prop-types';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/AntDesign';
+import IconFA from 'react-native-vector-icons/FontAwesome';
 
 import styles from './styles';
 
@@ -13,7 +14,7 @@ const todoItem = ({ title, completed, onFocus }) => {
 
     return (
         <View style={container}>
-            {completed ? <Icon name="check-square" size={ICON_SIZE} /> : <Icon name="square" size={ICON_SIZE} />}
+            {completed ? <IconFA name="check-square-o" size={ICON_SIZE} /> : <IconFA name="square-o" size={ICON_SIZE} />}
             <TextInput 
                 style={titleStyle} 
                 editable={!completed}
@@ -21,7 +22,7 @@ const todoItem = ({ title, completed, onFocus }) => {
             >
                 {title}
             </TextInput>
-            <Icon name="star" size={ICON_SIZE} />
+            <Icon name="staro" size={ICON_SIZE}/>
             { completed ? <View style={removeLineStyle}/> : null}
         </View>
     );
