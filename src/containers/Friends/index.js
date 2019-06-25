@@ -83,10 +83,6 @@ class Friends extends Component {
     }
 
      /*
-    formattedAddress = (address) => {
-        [street, suite, city, zipcode] = Object.keys(address).map(key => address[key]);
-        return "".concat([suite, street, city, zipcode]);
-    }
    
     loadMoreFriends = () => {
         const { start, limit } = this.state;

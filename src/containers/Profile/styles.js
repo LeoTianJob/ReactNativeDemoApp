@@ -3,8 +3,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 import { pureBlack, pureWhite, lightGrey, darkGrey } from '../../styles/colors';
 import { defaultFont } from '../../styles/fonts';
 
-const PROFILE_PHOTO_WIDTH = Dimensions.get('window').width - 50;
-
+export const PROFILE_PHOTO_WIDTH = Dimensions.get('window').width - 50;
 
 export default StyleSheet.create({
     container: {
@@ -19,7 +18,8 @@ export default StyleSheet.create({
         borderRadius: 20,
         overflow:'hidden',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        zIndex: 10
     },
     bgImgStyle: {
         width: PROFILE_PHOTO_WIDTH,
@@ -32,11 +32,17 @@ export default StyleSheet.create({
         tintColor: darkGrey,
         top: PROFILE_PHOTO_WIDTH / 2 - 64
     },
+    nameContainerStyle: {
+        width: PROFILE_PHOTO_WIDTH,
+        height: PROFILE_PHOTO_WIDTH / 2, 
+        justifyContent:'space-around', 
+        alignItems: 'center',
+    },
     nameStyle: {
         fontFamily: defaultFont,
         fontWeight: '700',
         fontSize: 20,
-        marginTop: 25
+        marginTop: 55
     },
     separatorStyle: {
         width: PROFILE_PHOTO_WIDTH,
@@ -46,9 +52,11 @@ export default StyleSheet.create({
     },
     userInfoStyle: {
         width: PROFILE_PHOTO_WIDTH, 
-        height: 500, 
         backgroundColor: pureWhite,
+        borderBottomRightRadius: 25,
+        borderBottomLeftRadius: 25,
         marginTop: -20,
-        padding: 30
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
