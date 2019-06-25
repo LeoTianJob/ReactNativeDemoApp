@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from  'react-redux';
 import { Text, View } from 'react-native';
 
+import TodoItem from '../../components/TodoItem';
+
 import styles from './styles';
 class Todos extends Component {
     render() {
@@ -10,7 +12,8 @@ class Todos extends Component {
 
         return (
             <View style={container}>
-                <Text> This is Todos page</Text>
+               <TodoItem />
+               <TodoItem />
             </View>
         );
     }

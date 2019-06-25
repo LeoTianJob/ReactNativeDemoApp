@@ -2,7 +2,7 @@ import React from 'react';
 import { Image } from 'react-native';
 import PropTypes from 'prop-types';
 
-const avatar = ({ imgUri , size}) => {
+const avatar = ({ imgUri , size, disabled }) => {
     const source = imgUri ? { uri: imgUri} : require('../../assets/images/user.png');
 
     return (

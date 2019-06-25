@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { darkGrey } from '../../styles/colors';
+import { darkGrey, pureWhite } from '../../styles/colors';
 import { defaultFont } from '../../styles/fonts';
 
 export default StyleSheet.create({
@@ -7,12 +7,22 @@ export default StyleSheet.create({
         height: 100,
         flexDirection: 'row',
         padding: 15,
-        marginHorizontal: 20,
-        marginVertical: 10,
+        marginHorizontal: 15,
+        marginVertical: 5,
         borderWidth: 1,
         borderColor: darkGrey,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: pureWhite,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 0.35,
+        shadowRadius: 6,
+
+        elevation: 10,
     },
     userInfoStyle: {
         flex: 1,
