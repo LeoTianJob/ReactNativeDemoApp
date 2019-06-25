@@ -1,7 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
     container: {
-        flex: 1
+        height: Dimensions.get('window').height - 170,
+        marginTop: 10
     }
 });

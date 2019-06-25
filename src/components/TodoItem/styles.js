@@ -10,7 +10,7 @@ export default StyleSheet.create({
         paddingHorizontal: 10,
         justifyContent: 'space-between',
         height: ITEM_HEIGHT,
-        marginVertical: 1,
+        marginVertical: 2,
         marginHorizontal: 5,
         borderWidth: 1,
         borderColor: darkGrey,
@@ -27,8 +27,11 @@ export default StyleSheet.create({
         elevation: 10, 
     },
     titleStyle: {
+        flex: 1,
         fontFamily: defaultFont,
-        fontSize: 10
+        fontSize: 14,
+        marginHorizontal: 20,
+        textAlign: 'left'
     },
     removeLineStyle: {
         position: 'absolute',

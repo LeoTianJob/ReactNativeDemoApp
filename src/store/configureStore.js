@@ -3,9 +3,11 @@ import axiosMiddleware from 'redux-axios-middleware';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 
 import loginUser from './reducers/loginUser';
+import userTodo from './reducers/userTodo'
 
 const rootReducer = combineReducers({
-    loginUser
+    loginUser,
+    userTodo
 })
 
 const client = axios.create({
