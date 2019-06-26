@@ -7,7 +7,7 @@
 3. [Installation](#Installation)
 4. [Code Features](#Code-Features)
 5. [App Functions](#App-Functions)
-6. [Optimizations (TODO)](#Other-Optimizations-\(TODO\))
+6. [Optimizations](#Optimizations)
 
 ## Introduction
 
@@ -158,7 +158,7 @@ List 5 Tabs for the app. (Tab Navigator)
 
 -------> Post a gif animation here.
 
-## Other Optimizations (TODO)
+## Optimizations
 
 Because of the time limitation, the app can still be improved in the futures.
 
