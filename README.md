@@ -9,7 +9,7 @@
 5. [Functions](#5.-Functions)
 6. [Optimizations (TODO)](#6.-Other-Optimizations-(TODO))
 
-##Introduction
+## Introduction
 
 This is a simple social mobile app, showing how to use react-native to build a cross-platform mobile application.
 
