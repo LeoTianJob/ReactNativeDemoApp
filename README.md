@@ -3,11 +3,11 @@
 ## 0. Content
 
 1. [Introduction](#Introduction)
-2. [Environment](#2.-Environment)
-3. [Installation](#3.-Installation)
-4. [Code Features](#4.-Code-Features)
-5. [Functions](#5.-Functions)
-6. [Optimizations (TODO)](#6.-Other-Optimizations-(TODO))
+2. [Environment](#Environment)
+3. [Installation](#Installation)
+4. [Code Features](#Code-Features)
+5. [App Functions](#App-Functions)
+6. [Optimizations (TODO)](#Other-Optimizations-(TODO))
 
 ## Introduction
 
@@ -23,7 +23,7 @@ The mobile app contains 5 modules:
 * List Todos
 * Show profile of login user
 
-## 2. Environment:
+## Environment:
 Below list is the software/package versions when I develop this app.
 
 
@@ -49,7 +49,7 @@ Information from package.json:
 "redux-axios-middleware": "^4.0.0"
 ```
 
-## 3. Installation
+## Installation
 
 *NOTE: I develop this mobile on Macbook Pro, the below commands are all based on macOS*
 
@@ -90,7 +90,7 @@ After installing all the packages, run the app on iOS simulator by command
 react-native run-ios
 ```
 
-## 4. Code Features
+## Code Features
 
 The below features are mainly shown in the code:
 
@@ -105,7 +105,7 @@ The below features are mainly shown in the code:
 9. How to use [`axios`](https://github.com/axios/axios) to do http request.
 10. How to write Basic UI styles.
 
-## 5. App Functions
+## App Functions
 
 ### Home Page
 
@@ -158,7 +158,7 @@ List 5 Tabs for the app. (Tab Navigator)
 
 -------> Post a gif animation here.
 
-## 6. Other Optimizations (TODO)
+## Other Optimizations (TODO)
 
 Because of the time limitation, the app can still be improved in the futures.
 
