@@ -41,7 +41,6 @@ class Todos extends Component {
                         renderItem={({ item }) => <TodoItem title={item.title} completed={item.completed} />}
                     />
                     <Text>{JSON.stringify(this.props.loginUser)}</Text>
-                    
                 </View>
             );
         }
