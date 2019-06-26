@@ -13,7 +13,7 @@ const photo = ({ imgUri, onClick, disabled }) => {
             onPress={onClick}
             disabled={disabled}
         >
-            <Image source={source}/>
+            <Image source={source} resizeMode="center"/>
         </TouchableOpacity>
     );
 }
