@@ -1,11 +1,13 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 import { darkGrey, lightGrey } from '../../styles/colors';
 import { defaultFont, defaultFontBold } from '../../styles/fonts';
 
+const SCREEN_WIDTH = Dimensions.get('window').width;
+
 export default StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 1
     },
     separatorVertical: {
         borderWidth: 0.5,
@@ -40,8 +42,20 @@ export default StyleSheet.create({
         lineHeight: 15
     },
     bodyStyle: {
-        height: 1000,
-        backgroundColor: 'yellow'
+        flex: 1,
+        padding: 5
+    },
+    postContentStyle: {
+        fontSize: 20,
+        fontFamily: defaultFont,
+        padding: 10,
+        lineHeight: 30
+    },
+    separatorHorizontal: {
+        width: SCREEN_WIDTH - 20,
+        borderBottomWidth: 0.5,
+        borderBottomColor: darkGrey,
+        height: StyleSheet.hairlineWidth
     }
 });
 

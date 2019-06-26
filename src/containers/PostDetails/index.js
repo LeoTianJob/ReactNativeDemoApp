@@ -4,11 +4,11 @@ import { View, Text, ScrollView } from 'react-native';
 import Loading from '../../components/Loading';
 
 import axios from '../../utilities/axios';
-import FriendItem from '../../components/FriendItem';
 import Avatar from '../../components/Avatar';
 import TextInputBar from '../../components/TextInputBar';
 
 import styles from './styles';
+import CommentItem from '../../components/CommentItem';
 
 class PostDetails extends Component {
 
@@ -42,13 +42,15 @@ class PostDetails extends Component {
 
         const {
             container,
+            separatorHorizontal,
             separatorVertical,
             headerStyle,
             bodyStyle,
             avatarStyle,
             usernameStyle,
             titleContainerStyle,
-            titleStyle
+            titleStyle,
+            postContentStyle
         } = styles;
 
         const { loading } = this.state;
@@ -78,23 +80,14 @@ class PostDetails extends Component {
                     </View>
                 </View>
                 <ScrollView style={bodyStyle}>
-                    <Text style={{}}>
+                    <Text style={postContentStyle}>
                         {body}
                     </Text>
-                    <FriendItem />
-                    <FriendItem />
-                    <FriendItem />
-                    <FriendItem />
-                    <FriendItem />
-                    <FriendItem />
-                    <FriendItem />
-                    <FriendItem />
-                    <FriendItem />
-                    <FriendItem />
-                    <FriendItem />
-                    <FriendItem />
-                    <FriendItem />
-                    <FriendItem />
+                    <View style={separatorHorizontal} />
+                    {this.state.comments.map(comment => {
+                        const { id, name, email, body } = comment;
+                        return <CommentItem key={id} name={name} email={email} comment={body} />
+                    })}
                 </ScrollView>
                 <TextInputBar />
             </View>
