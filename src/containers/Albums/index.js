@@ -10,7 +10,7 @@ import AlbumItem from '../../components/AlbumItem';
 import styles from './styles';
 import { defaultFont } from '../../styles/fonts';
 import { TOPBAR_FONT_SIZE, TOPBAR_TEXT_COLOR, BG_COLOR } from '../../navigation/navigation';
-import { POST_DETAILS_PAGE, ALBUM_DETAILS_PAGE } from '../../navigation/screens';
+import { ALBUM_DETAILS_PAGE } from '../../navigation/screens';
 
 // I uses state and redux for Album page
 class Albums extends Component {
