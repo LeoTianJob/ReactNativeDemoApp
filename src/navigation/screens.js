@@ -23,7 +23,7 @@ const store = configureStore();
 
 // Only TODOS and PROFILE support redux, I made this on purpose, for other pages, I will use local state
 registerScreens = () => {
-    Navigation.registerComponent(POSTS_PAGE, () => withSafeArea(Posts));
+    Navigation.registerComponent(POSTS_PAGE, () => Posts);
     Navigation.registerComponent(POST_DETAILS, () => PostDetails);
     Navigation.registerComponent(FRIENDS_PAGE, () => withSafeArea(Friends));
     Navigation.registerComponent(ALBUMS_PAGE, () => withSafeArea(Albums));

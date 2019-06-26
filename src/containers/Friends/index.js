@@ -57,7 +57,7 @@ class Friends extends Component {
     onClickFriendItem = (userId) => {
 
         const selectedFriend = this.state.friendsList.filter(user => user.id === userId)[0];
-        axios.get(`/photos?id=${userId}`)
+        axios.get(`/photos?id=${userId}`) // The same reason with profile for using photo id here.
             .then(res => {
                 Navigation.push(this.props.componentId,
                     {
@@ -84,7 +84,7 @@ class Friends extends Component {
                                 }
                             }
                         }
-                    })
+                    });
             })
             .catch(err => {
 

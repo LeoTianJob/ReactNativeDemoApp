@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { FlatList, View, Alert } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
 import axios from '../../utilities/axios';
 import PostItem from '../../components/PostItem';
 import Loading from '../../components/Loading';
 
 import styles from './styles';
+import { POST_DETAILS } from '../../navigation/screens';
+import { defaultFont } from '../../styles/fonts';
+import { TOPBAR_FONT_SIZE, TOPBAR_TEXT_COLOR, BG_COLOR } from '../../navigation/navigation';
 
 class Posts extends Component {
 
@@ -71,13 +75,35 @@ class Posts extends Component {
         return uplist;
     }
 
+    onClickPost = (post) => {
+        Navigation.push(this.props.componentId,
+            {
+                component: {
+                    name: POST_DETAILS,
+                    passProps: {
+                        post
+                    },
+                    options: {
+                        topBar: {
+                            title: {
+                                text: 'Post',
+                                fontFamily: defaultFont,
+                                fontSize: TOPBAR_FONT_SIZE,
+                                color: TOPBAR_TEXT_COLOR
+                            },
+                            background: {
+                                color: BG_COLOR
+                            }
+                        }
+                    }
+                }
+            });
+    }
+
     render() {
 
         const { loading, userPostList } = this.state;
         const { container } = styles;
-
-        console.log('userPostList =======>');
-        console.log(userPostList)
 
         if (loading) {
             return <Loading />
@@ -93,10 +119,11 @@ class Posts extends Component {
                             username={item.username}
                             title={item.title}
                             content={item.body}
+                            onClick={() => this.onClickPost(item)}
                         />}
                     ListFooterComponent={this.state.isloading ? <Loading size="small" /> : null}
                     onEndReachedThreshold={0.4}
-                    onEndReached={() => {}}
+                    onEndReached={() => { }}
                 />
             </View>
         );

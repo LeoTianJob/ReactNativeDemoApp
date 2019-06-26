@@ -48,7 +48,8 @@ export default StyleSheet.create({
     postConentStyle: {
         fontFamily: defaultFont,
         fontSize: 12,
-        padding: 5
+        padding: 5,
+        lineHeight: 18
     },
     socialBtnContainerStyle: {
         flex: 1,
