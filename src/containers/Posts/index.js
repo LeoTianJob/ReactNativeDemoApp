@@ -12,6 +12,10 @@ class Posts extends Component {
         return (
             <View>
                 <PostItem />
+                <PostItem />
+                <PostItem />
+                <PostItem />
+                <PostItem />
             </View>
         );
     }
