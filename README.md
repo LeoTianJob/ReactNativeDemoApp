@@ -169,10 +169,12 @@ Because of the time limitation, the app can still be improved in the futures.
 - [ ] **[Improvement]** Use HOC (like withErrorHandler) to handler the errors of http response.
 - [ ] **[Improvement]** Check all `componentWillUnmount()` functions when one component get destroyed.
 - [ ] **[Improvement]**  Fix warning:
+
     ```
     Unable to define method 'getConstants()' on NativeModule 'RNNBridgeModule'. NativeModule 'RNNBridgeModule' already has a constant or method called 'getConstants'. Please remove it.
     ```
 - [ ] **[Improvement]** Fix warning:
+
     ```
     Require cycle: src/navigation/screens.js -> src/containers/Posts/index.js -> src/navigation/screens.js
     ```
