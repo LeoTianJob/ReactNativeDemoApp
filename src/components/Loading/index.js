@@ -3,9 +3,11 @@ import { ActivityIndicator, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { honoluluBlue } from '../../styles/colors';
 
+import styles from './styles';
+
 const loading = ({ size, color }) => {
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <View style={styles.container}>
             <ActivityIndicator size={size} color={color} />
         </View>
     );
