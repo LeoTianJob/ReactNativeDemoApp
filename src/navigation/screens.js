@@ -26,7 +26,7 @@ registerScreens = () => {
     Navigation.registerComponent(POSTS_PAGE, () => Posts);
     Navigation.registerComponent(POST_DETAILS, () => PostDetails);
     Navigation.registerComponent(FRIENDS_PAGE, () => withSafeArea(Friends));
-    Navigation.registerComponent(ALBUMS_PAGE, () => withSafeArea(Albums));
+    Navigation.registerComponentWithRedux(ALBUMS_PAGE, () => withSafeArea(Albums), Provider, store);
     Navigation.registerComponentWithRedux(TODOS_PAGE, () => withSafeArea(Todos), Provider, store);
     Navigation.registerComponentWithRedux(PROFILE_PAGE, () => withSafeArea(Profile), Provider, store);
 }

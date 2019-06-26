@@ -45,13 +45,12 @@ const reducer = (state = initState, action) => {
         case GET_LOGIN_USER:
             return {...state, loadingUser: true};
         case GET_LOGIN_USER_SUCCESS:
+            const newUserInfo = action.payload.data;
+            newUserInfo["url"] = state.userInfo.url;
+            newUserInfo["thumbnailUrl"] = state.userInfo.thumbnailUrl;
             return {
                 ...state,
-                userInfo: {
-                    url: state.userInfo.url,
-                    thumbnailUrl: state.userInfo.thumbnailUrl,
-                    ...action.payload.data
-                },
+                userInfo: newUserInfo,
                 loadingUser: false
             };
         case GET_LOGIN_USER_FAIL:
