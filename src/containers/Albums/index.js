@@ -26,16 +26,16 @@ class Albums extends Component {
 
         if (this.state.loading) {
             axios.get(`/albums?userId=${loginUser.id}`)
-            .then(res => {
-                console.log(res);
-                this.setState({
-                    albumlist: res.data,
-                    loading: false
+                .then(res => {
+                    console.log(res);
+                    this.setState({
+                        albumlist: res.data,
+                        loading: false
+                    })
                 })
-            })
-            .catch(err => {
+                .catch(err => {
 
-            });
+                });
         }
     }
 
@@ -58,7 +58,9 @@ class Albums extends Component {
                 <FlatList
                     keyExtractor={item => item.id.toString()}
                     data={albumlist}
-                    renderItem={({ item }) => <AlbumItem />}
+                    renderItem={({ item }) =>
+                        <AlbumItem title={item.title} username={userInfo.name} />
+                    }
                 />
             </View>
         );

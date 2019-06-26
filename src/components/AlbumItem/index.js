@@ -17,7 +17,7 @@ const albumItem = ({ title, username }) => {
         usernameTextStyle
     } = styles;
     return (
-        <TouchableOpacity style={container}>
+        <TouchableOpacity style={container} activeOpacity={0.85}>
             <View style={titleStyle}>
                 <Text style={titleTextStyle}>{title}</Text>
             </View>

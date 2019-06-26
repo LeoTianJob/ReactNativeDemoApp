@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { pureWhite } from '../../styles/colors';
+import { pureWhite, darkGrey } from '../../styles/colors';
 import { defaultFontBold, defaultFont } from '../../styles/fonts';
 
 export default StyleSheet.create({
@@ -11,7 +11,9 @@ export default StyleSheet.create({
     titleStyle: {
         flex: 1,
         padding: 5,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        borderBottomColor: darkGrey
     },
     titleTextStyle: {
         fontFamily: defaultFontBold,
@@ -19,7 +21,9 @@ export default StyleSheet.create({
     },
     photoContainerStyle: {
         flex: 4,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        borderBottomColor: darkGrey
     },
     userContainerStyle: {
         flex: 1,
