@@ -15,8 +15,8 @@ const initState = {
         name: "",
         username: "",
         email: "",
-        url: null,
-        thumbnailUrl: null,
+        url: null,  // Here I use the first phote in albumn as user's default background image in profile page
+        thumbnailUrl: null, // Here I use the first phote as user's default background image in profile page
         address: {
             street: null,
             suite: null,
