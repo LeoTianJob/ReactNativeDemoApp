@@ -2,14 +2,14 @@
 
 ## 0. Content
 
-1. [Introduction](#1.-Introduction)
+1. [Introduction](#Introduction)
 2. [Environment](#2.-Environment)
 3. [Installation](#3.-Installation)
 4. [Code Features](#4.-Code-Features)
 5. [Functions](#5.-Functions)
 6. [Optimizations (TODO)](#6.-Other-Optimizations-(TODO))
 
-## 1. Introduction
+##Introduction
 
 This is a simple social mobile app, showing how to use react-native to build a cross-platform mobile application.
 
