@@ -97,7 +97,7 @@ class Albums extends Component {
         if (loading || userInfo.id <= 0) {
             return <Loading />
         }
-        console.log(albumlist);
+        
         return (
             <View style={container}>
                 <FlatList

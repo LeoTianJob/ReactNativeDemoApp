@@ -19,17 +19,59 @@ class Posts extends Component {
         this.state = {
             userPostList: [],
             allUsers: [],
-            loading: false
+            loading: true,
+            isLoadingMore: false,
+            limit: 5
+        }
+    }
+
+    componentDidUpdate() {
+        const { isLoadingMore, userPostList, allUsers, limit } = this.state;
+
+        if (isLoadingMore) {
+            axios.get(`/posts?_start=${userPostList.length}&_limit=${limit}`)
+                .then(res => {
+
+                    if (res.data.length > 0) {
+
+                        const oldUserPostList = [...userPostList];
+                        let newUserPostList = this.getUserPostList(allUsers, res.data);
+                        newUserPostList = oldUserPostList.concat(newUserPostList)
+
+                        this.setState({
+                            isLoadingMore: false,
+                            userPostList: newUserPostList
+                        });
+                    } else {
+                        Alert.alert(
+                            "",
+                            "There are no more posts!",
+                            [
+                                { text: 'OK', onPress: () => this.setState({ isloading: false }) },
+                            ],
+                            { cancelable: false },
+                        );
+                    }
+
+                })
+                .catch(err => {
+                    Alert.alert(
+                        'ERROR',
+                        err,
+                        [
+                            { text: 'OK', onPress: () => { } },
+                        ],
+                        { cancelable: true },
+                    );
+                });
         }
     }
 
     componentDidMount() {
 
-        this.setState({ loading: true });
-
         Promise.all([
-            axios.get('/posts'),
-            axios.get('/users')
+            axios.get(`/posts?_start=${0}&_limit=${this.state.limit}`),
+            axios.get(`/users`)
         ]).then(res => {
             [postRes, userRes] = res;
 
@@ -56,49 +98,6 @@ class Posts extends Component {
         })
     }
 
-        /*
-  
-   loadMoreFriends = () => {
-       const { start, limit } = this.state;
-       console.log(`/users?_start=${start + limit}&_limit=${limit}`)
-       axios.get(`/users?_start=${start + limit}&_limit=${limit}`)
-           .then(res => {
-
-               if (res.data.length > 0) {
-                   newFriendsList = [...this.state.friendsList]
-                   newFriendsList.concat(res.data)
-                   this.setState((preState) => {
-                       return {
-                           isloading: false,
-                           start: preState.start + preState.limit,
-                           friendsList: newFriendsList
-                       }
-                   });
-               } else {
-                   Alert.alert(
-                       "",
-                       "There are no more friends!",
-                       [
-                           { text: 'OK', onPress: () => this.setState({ isloading: false}) },
-                       ],
-                       { cancelable: false },
-                   );
-               }
-
-           })
-           .catch(err => {
-               Alert.alert(
-                   'ERROR',
-                   err,
-                   [
-                       { text: 'OK', onPress: () => { } },
-                   ],
-                   { cancelable: true },
-               );
-           });
-   }
-   */
-
     getUserPostList = (ulist, plist) => {
 
         const userObj = ulist.reduce((userObj, user) => {
@@ -115,7 +114,6 @@ class Posts extends Component {
 
             return newpost;
         });
-
         return uplist;
     }
 
@@ -154,7 +152,7 @@ class Posts extends Component {
         }
 
         return (
-            <View>
+            <View style={container}>
                 <FlatList
                     keyExtractor={item => item.id.toString()}
                     data={userPostList}
@@ -165,9 +163,9 @@ class Posts extends Component {
                             content={item.body}
                             onClick={() => this.onClickPost(item)}
                         />}
-                    ListFooterComponent={this.state.isloading ? <Loading size="small" /> : null}
-                    onEndReachedThreshold={0.4}
-                    onEndReached={() => { }}
+                    ListFooterComponent={this.state.isLoadingMore ? <Loading size="small" /> : null}
+                    onEndReachedThreshold={0}
+                    onEndReached={() => this.setState({ isLoadingMore: true })}
                 />
             </View>
         );
