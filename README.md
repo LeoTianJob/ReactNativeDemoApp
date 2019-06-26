@@ -162,7 +162,7 @@ List 5 Tabs for the app. (Tab Navigator)
 
 ## Optimizations
 
-Because of the time limitation, the app can still be improved in the futures.
+Because of the time limitation, the app can still be improved in the future.
 
 **TODO:**
 
