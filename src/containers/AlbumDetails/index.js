@@ -94,8 +94,6 @@ class AlbumDetails extends Component {
             return <Loading />;
         }
 
-        // console.log(this.constructPhotoLayout());
-
         return (
             <View style={container}>
                 <ScrollView>

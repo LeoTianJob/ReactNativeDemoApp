@@ -47,13 +47,13 @@ class Albums extends Component {
                             })
                         })
                         .catch(err => {
-                            console.log('Fetching albumn photos');
+                            console.log('Fetching album photos');
                             console.log(err);
                         });
 
                 })
                 .catch(err => {
-                    console.log('Fetching albumn failed!');
+                    console.log('Fetching album failed!');
                     console.log(err);
                 });
         }

@@ -27,7 +27,6 @@ class PostDetails extends Component {
 
         axios.get(`/comments?postId=${postId}`)
             .then(res => {
-                console.log(res)
                 this.setState({
                     comments: res.data,
                     loading: false
@@ -60,8 +59,6 @@ class PostDetails extends Component {
             title,
             body,
         } = this.props.post;
-
-        console.log(this.props.post)
 
         if (loading) {
             return <Loading />
