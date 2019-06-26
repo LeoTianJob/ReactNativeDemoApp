@@ -156,7 +156,7 @@ List 5 Tabs for the app. (Tab Navigator)
 2. Create a good-look profile avatar component.
 3. Use basic animation to show user's information by clicking button.
 
--------> Post a gif animation here.
+![Profile](https://github.com/LeoTianJob/SCBDemoApp/blob/master/resources/Profile.gif)
 
 ## Optimizations
 
