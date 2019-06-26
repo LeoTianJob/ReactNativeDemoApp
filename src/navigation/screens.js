@@ -29,12 +29,12 @@ const store = configureStore();
 registerScreens = () => {
     Navigation.registerComponent(POSTS_PAGE, () => Posts);
     Navigation.registerComponent(POST_DETAILS_PAGE, () => PostDetails);
-    Navigation.registerComponent(FRIENDS_PAGE, () => withSafeArea(Friends));
-    Navigation.registerComponentWithRedux(ALBUMS_PAGE, () => withSafeArea(Albums), Provider, store);
-    Navigation.registerComponent(ALBUM_DETAILS_PAGE, () => withSafeArea(AlbumDetails));
+    Navigation.registerComponent(FRIENDS_PAGE, () => withSafeArea(Friends, true));
+    Navigation.registerComponentWithRedux(ALBUMS_PAGE, () => withSafeArea(Albums, true), Provider, store);
+    Navigation.registerComponent(ALBUM_DETAILS_PAGE, () => withSafeArea(AlbumDetails, true));
     Navigation.registerComponent(PHOTO_DETAILS, () => withSafeArea(PhotoDetails, false));
-    Navigation.registerComponentWithRedux(TODOS_PAGE, () => withSafeArea(Todos), Provider, store);
-    Navigation.registerComponentWithRedux(PROFILE_PAGE, () => withSafeArea(Profile), Provider, store);
+    Navigation.registerComponentWithRedux(TODOS_PAGE, () => withSafeArea(Todos, true), Provider, store);
+    Navigation.registerComponentWithRedux(PROFILE_PAGE, () => withSafeArea(Profile, true), Provider, store);
 }
 
 export default registerScreens;

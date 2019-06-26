@@ -56,8 +56,51 @@ class Posts extends Component {
         })
     }
 
+        /*
+  
+   loadMoreFriends = () => {
+       const { start, limit } = this.state;
+       console.log(`/users?_start=${start + limit}&_limit=${limit}`)
+       axios.get(`/users?_start=${start + limit}&_limit=${limit}`)
+           .then(res => {
+
+               if (res.data.length > 0) {
+                   newFriendsList = [...this.state.friendsList]
+                   newFriendsList.concat(res.data)
+                   this.setState((preState) => {
+                       return {
+                           isloading: false,
+                           start: preState.start + preState.limit,
+                           friendsList: newFriendsList
+                       }
+                   });
+               } else {
+                   Alert.alert(
+                       "",
+                       "There are no more friends!",
+                       [
+                           { text: 'OK', onPress: () => this.setState({ isloading: false}) },
+                       ],
+                       { cancelable: false },
+                   );
+               }
+
+           })
+           .catch(err => {
+               Alert.alert(
+                   'ERROR',
+                   err,
+                   [
+                       { text: 'OK', onPress: () => { } },
+                   ],
+                   { cancelable: true },
+               );
+           });
+   }
+   */
+
     getUserPostList = (ulist, plist) => {
-        
+
         const userObj = ulist.reduce((userObj, user) => {
             const { id, name } = user;
             userObj[id] = name;
