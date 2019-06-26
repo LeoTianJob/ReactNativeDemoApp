@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Text, SafeAreaView } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { connect } from 'react-redux'
 
 import axios from '../../utilities/axios';
+import Loading from '../../components/Loading';
+import AlbumItem from '../../components/AlbumItem';
 
 import styles from './styles';
 
@@ -18,35 +20,47 @@ class Albums extends Component {
         }
     }
 
-    componentWillUpdate() {
+    componentDidUpdate() {
+        // We need to fetch album data after we get login user id.
         const loginUser = this.props.userInfo;
-        console.log('----componentWillUpdate------')
-        console.log(loginUser);
-    }
 
-    componentDidMount() {
-        // Here I only handle albums of login user, which is user id = 1
-        const loginUser = this.props.userInfo;
-        
-        console.log(loginUser);
-
-        axios.get(`/albums?userId=${1}`)
+        if (this.state.loading) {
+            axios.get(`/albums?userId=${loginUser.id}`)
             .then(res => {
                 console.log(res);
+                this.setState({
+                    albumlist: res.data,
+                    loading: false
+                })
             })
             .catch(err => {
 
             });
+        }
+    }
 
+    componentDidMount() {
     }
 
     render() {
         const { container } = styles;
 
+        const { loading, albumlist } = this.state;
+
+        const { userInfo } = this.props;
+
+        if (loading || userInfo.id <= 0) {
+            return <Loading />
+        }
+
         return (
-            <SafeAreaView style={container}>
-                <Text> This is Albums page</Text>
-            </SafeAreaView>
+            <View style={container}>
+                <FlatList
+                    keyExtractor={item => item.id.toString()}
+                    data={albumlist}
+                    renderItem={({ item }) => <AlbumItem />}
+                />
+            </View>
         );
     }
 }

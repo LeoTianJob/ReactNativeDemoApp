@@ -7,7 +7,7 @@ const withSafeArea = (WrappedComponent) => {
     const { safearea, bgImgStyle } = styles;
     return props => {
         return (
-            <ImageBackground source={require('../assets/images/bgImg2.jpg')} style={bgImgStyle} >
+            <ImageBackground source={require('../assets/images/bgImg.jpg')} style={bgImgStyle} >
                 <SafeAreaView style={safearea}>
                     <WrappedComponent {...props} />
                 </SafeAreaView>
