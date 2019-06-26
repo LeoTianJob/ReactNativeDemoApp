@@ -7,7 +7,7 @@ import PostItem from '../../components/PostItem';
 import Loading from '../../components/Loading';
 
 import styles from './styles';
-import { POST_DETAILS } from '../../navigation/screens';
+import { POST_DETAILS_PAGE } from '../../navigation/screens';
 import { defaultFont } from '../../styles/fonts';
 import { TOPBAR_FONT_SIZE, TOPBAR_TEXT_COLOR, BG_COLOR } from '../../navigation/navigation';
 
@@ -57,7 +57,8 @@ class Posts extends Component {
     }
 
     getUserPostList = (ulist, plist) => {
-        userObj = ulist.reduce((userObj, user) => {
+        
+        const userObj = ulist.reduce((userObj, user) => {
             const { id, name } = user;
             userObj[id] = name;
             return userObj;
@@ -79,7 +80,7 @@ class Posts extends Component {
         Navigation.push(this.props.componentId,
             {
                 component: {
-                    name: POST_DETAILS,
+                    name: POST_DETAILS_PAGE,
                     passProps: {
                         post
                     },

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView, ImageBackground, Dimensions, StyleSheet } from 'react-native';
+import { SafeAreaView, ImageBackground, Dimensions, StyleSheet, View } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
@@ -10,6 +10,7 @@ const withSafeArea = (WrappedComponent) => {
             <ImageBackground source={require('../assets/images/bgImg.jpg')} style={bgImgStyle} >
                 <SafeAreaView style={safearea}>
                     <WrappedComponent {...props} />
+                    <View style={{ height: 170 }} />
                 </SafeAreaView>
             </ImageBackground>
         );

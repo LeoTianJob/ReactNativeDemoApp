@@ -7,7 +7,7 @@ import Avatar from '../Avatar';
 
 import styles from './styles';
 
-const albumItem = ({ title, username, thumbnails }) => {
+const albumItem = ({ title, username, thumbnails, onClick }) => {
     const {
         container,
         titleStyle,
@@ -17,12 +17,12 @@ const albumItem = ({ title, username, thumbnails }) => {
         usernameTextStyle
     } = styles;
     return (
-        <TouchableOpacity style={container} activeOpacity={0.85}>
+        <TouchableOpacity style={container} activeOpacity={0.85} onPress={onClick}>
             <View style={titleStyle}>
                 <Text style={titleTextStyle}>{title}</Text>
             </View>
             <View style={photoContainerStyle}>
-                {thumbnails.map((uri, idx) => idx <= 2 ? <Photo key={idx} imgUri={uri} disabled /> : null )}
+                {thumbnails.map((uri, idx) => idx <= 2 ? <Photo key={idx} imgUri={uri} disabled /> : null)}
             </View>
             <View style={userContainerStyle}>
                 <Avatar size={30} />
@@ -35,13 +35,15 @@ const albumItem = ({ title, username, thumbnails }) => {
 albumItem.propTypes = {
     title: PropTypes.string,
     username: PropTypes.string,
-    thumbnails: PropTypes.array
+    thumbnails: PropTypes.array,
+    onClick: PropTypes.func
 };
 
 albumItem.defaultProps = {
     title: 'Alumn Title',
     username: 'User Name',
-    thumbnails: [null, null, null]
+    thumbnails: [null, null, null],
+    onClick: () => { }
 };
 
 export default albumItem;

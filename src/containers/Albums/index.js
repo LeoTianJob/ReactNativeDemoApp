@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { FlatList, View } from 'react-native';
 import { connect } from 'react-redux'
+import { Navigation } from 'react-native-navigation';
 
 import axios from '../../utilities/axios';
 import Loading from '../../components/Loading';
 import AlbumItem from '../../components/AlbumItem';
 
 import styles from './styles';
+import { defaultFont } from '../../styles/fonts';
+import { TOPBAR_FONT_SIZE, TOPBAR_TEXT_COLOR, BG_COLOR } from '../../navigation/navigation';
+import { POST_DETAILS_PAGE, ALBUM_DETAILS_PAGE } from '../../navigation/screens';
 
 // I uses state and redux for Album page
 class Albums extends Component {
@@ -55,6 +59,31 @@ class Albums extends Component {
         }
     }
 
+    onClickAlbum = (album) => {
+        Navigation.push(this.props.componentId,
+            {
+                component: {
+                    name: ALBUM_DETAILS_PAGE,
+                    passProps: {
+                        album
+                    },
+                    options: {
+                        topBar: {
+                            title: {
+                                text: album.title,
+                                fontFamily: defaultFont,
+                                fontSize: TOPBAR_FONT_SIZE,
+                                color: TOPBAR_TEXT_COLOR
+                            },
+                            background: {
+                                color: BG_COLOR
+                            }
+                        }
+                    }
+                }
+            });
+    }
+
     componentDidMount() {
     }
 
@@ -75,7 +104,12 @@ class Albums extends Component {
                     keyExtractor={item => item.id.toString()}
                     data={albumlist}
                     renderItem={({ item }) =>
-                        <AlbumItem title={item.title} username={userInfo.name} thumbnails={item.thumbnails} />
+                        <AlbumItem
+                            title={item.title}
+                            username={userInfo.name}
+                            thumbnails={item.thumbnails}
+                            onClick={() => this.onClickAlbum(item)}
+                        />
                     }
                 />
             </View>
