@@ -12,5 +12,9 @@ export default StyleSheet.create({
         alignItems: 'center',
         borderWidth: 2,
         borderColor: pureWhite
+    },
+    imgStyle: {
+        width: PHOTO_WIDTH,
+        height: PHOTO_WIDTH
     }
 });

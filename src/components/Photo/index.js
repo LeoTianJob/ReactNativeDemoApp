@@ -6,14 +6,14 @@ import styles from './styles';
 
 const photo = ({ imgUri, onClick, disabled }) => {
     const source = imgUri ? { uri: imgUri } : require('../../assets/images/placeholder.png');
-
+    console.log(source)
     return (
         <TouchableOpacity
             style={styles.container}
             onPress={onClick}
             disabled={disabled}
         >
-            <Image source={source} resizeMode="center"/>
+            <Image source={source} style={styles.imgStyle} resizeMode="cover"/>
         </TouchableOpacity>
     );
 }

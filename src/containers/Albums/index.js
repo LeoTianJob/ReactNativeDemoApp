@@ -26,15 +26,31 @@ class Albums extends Component {
 
         if (this.state.loading) {
             axios.get(`/albums?userId=${loginUser.id}`)
-                .then(res => {
-                    console.log(res);
-                    this.setState({
-                        albumlist: res.data,
-                        loading: false
-                    })
+                .then(({ data }) => {
+                    const albumlist = []
+                    Promise.all(
+                        data.map(album => axios.get(`/photos?albumId=${album.id}&_start=0&_limit=3`))
+                    )
+                        .then(albumPhotoList => {
+                            albumPhotoList.forEach((albumPhotos, idx) => {
+                                data[idx]["thumbnails"] = albumPhotos.data.map(photo => photo.thumbnailUrl);
+                                albumlist.push(data[idx]);
+                            })
+
+                            this.setState({
+                                albumlist,
+                                loading: false
+                            })
+                        })
+                        .catch(err => {
+                            console.log('Fetching albumn photos');
+                            console.log(err);
+                        });
+
                 })
                 .catch(err => {
-
+                    console.log('Fetching albumn failed!');
+                    console.log(err);
                 });
         }
     }
@@ -52,14 +68,14 @@ class Albums extends Component {
         if (loading || userInfo.id <= 0) {
             return <Loading />
         }
-
+        console.log(albumlist);
         return (
             <View style={container}>
                 <FlatList
                     keyExtractor={item => item.id.toString()}
                     data={albumlist}
                     renderItem={({ item }) =>
-                        <AlbumItem title={item.title} username={userInfo.name} />
+                        <AlbumItem title={item.title} username={userInfo.name} thumbnails={item.thumbnails} />
                     }
                 />
             </View>

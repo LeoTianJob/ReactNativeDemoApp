@@ -7,7 +7,7 @@ import Avatar from '../Avatar';
 
 import styles from './styles';
 
-const albumItem = ({ title, username }) => {
+const albumItem = ({ title, username, thumbnails }) => {
     const {
         container,
         titleStyle,
@@ -22,9 +22,7 @@ const albumItem = ({ title, username }) => {
                 <Text style={titleTextStyle}>{title}</Text>
             </View>
             <View style={photoContainerStyle}>
-                <Photo disabled />
-                <Photo disabled />
-                <Photo disabled />
+                {thumbnails.map((uri, idx) => idx <= 2 ? <Photo key={idx} imgUri={uri} disabled /> : null )}
             </View>
             <View style={userContainerStyle}>
                 <Avatar size={30} />
@@ -36,12 +34,14 @@ const albumItem = ({ title, username }) => {
 
 albumItem.propTypes = {
     title: PropTypes.string,
-    username: PropTypes.string
+    username: PropTypes.string,
+    thumbnails: PropTypes.array
 };
 
 albumItem.defaultProps = {
     title: 'Alumn Title',
-    username: 'User Name'
+    username: 'User Name',
+    thumbnails: [null, null, null]
 };
 
 export default albumItem;
