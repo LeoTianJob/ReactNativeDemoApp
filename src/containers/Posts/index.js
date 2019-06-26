@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, View, Alert } from 'react-native';
+import { FlatList, View, Alert, Text } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
 import axios from '../../utilities/axios';
@@ -21,12 +21,13 @@ class Posts extends Component {
             allUsers: [],
             loading: true,
             isLoadingMore: false,
+            isRefresing: false,
             limit: 5
         }
     }
 
     componentDidUpdate() {
-        const { isLoadingMore, userPostList, allUsers, limit } = this.state;
+        const { isLoadingMore, isRefresing, userPostList, allUsers, limit } = this.state;
 
         if (isLoadingMore) {
             axios.get(`/posts?_start=${userPostList.length}&_limit=${limit}`)
@@ -64,6 +65,13 @@ class Posts extends Component {
                         { cancelable: true },
                     );
                 });
+        }
+
+        // Since there is no updated values from the API, I just fake a refresh by using setTimeout here.
+        if (isRefresing) {
+            setTimeout(() => {
+                this.setState({ isRefresing: false });
+            }, 2000);
         }
     }
 
@@ -144,7 +152,7 @@ class Posts extends Component {
 
     render() {
 
-        const { loading, userPostList } = this.state;
+        const { loading, userPostList, isLoadingMore, isRefresing } = this.state;
         const { container } = styles;
 
         if (loading) {
@@ -163,7 +171,10 @@ class Posts extends Component {
                             content={item.body}
                             onClick={() => this.onClickPost(item)}
                         />}
-                    ListFooterComponent={this.state.isLoadingMore ? <Loading size="small" /> : null}
+                    refreshing={isRefresing}
+                    onRefresh={() => this.setState({ isRefresing: true })}
+                    ListHeaderComponent={isRefresing ? <Text>Pretend to get more posts!</Text> : null}
+                    ListFooterComponent={isLoadingMore ? <Loading size="small" /> : null}
                     onEndReachedThreshold={0}
                     onEndReached={() => this.setState({ isLoadingMore: true })}
                 />
