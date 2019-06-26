@@ -3,14 +3,12 @@ import { darkGrey, pureWhite } from '../../styles/colors';
 import { defaultFont } from '../../styles/fonts';
 
 export const POST_WIDTH = Dimensions.get('window').width;
-export const MIN_POST_HEIGHT = 150;
 
 export default StyleSheet.create({
     container: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: POST_WIDTH,
-        minHeight: 150,
         borderTopWidth: 1,
         borderBottomWidth: 1,
         borderColor: darkGrey,
@@ -24,7 +22,6 @@ export default StyleSheet.create({
     },
     contentContainerStyle: {
         flex: 3,
-        height: MIN_POST_HEIGHT,
         paddingHorizontal: 10
     },
     usernameStyle: {
@@ -52,5 +49,11 @@ export default StyleSheet.create({
         fontFamily: defaultFont,
         fontSize: 12,
         padding: 5
+    },
+    socialBtnContainerStyle: {
+        flex: 1,
+        flexDirection: 'row',
+        fontSize: 10,
+        marginTop: 5
     }
 });

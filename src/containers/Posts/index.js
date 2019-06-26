@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, View, Alert } from 'react-native';
 
 import axios from '../../utilities/axios';
 import PostItem from '../../components/PostItem';
@@ -13,8 +13,8 @@ class Posts extends Component {
         super(props);
 
         this.state = {
-            postlist: [],
-            userlist: [],
+            userPostList: [],
+            allUsers: [],
             loading: false
         }
     }
@@ -27,15 +27,20 @@ class Posts extends Component {
             axios.get('/posts'),
             axios.get('/users')
         ]).then(res => {
-            console.log('res =======>');
-            console.log(res);
             [postRes, userRes] = res;
+
+            const plist = postRes.data;
+            const allUsers = userRes.data;
+
+            const userPostList = this.getUserPostList(allUsers, plist);
+
             this.setState({
-                postList: postRes.data,
-                userList: userRes.data,
+                userPostList,
+                allUsers,
                 loading: false 
-            })
-        }).catch(err => {   
+            });
+
+        }).catch(err => {  
             Alert.alert(
                 'ERROR',
                 err,
@@ -47,10 +52,32 @@ class Posts extends Component {
         })
     }
 
+    getUserPostList = (ulist, plist) => {
+        userObj = ulist.reduce((userObj, user) => {
+            const { id, name} = user;
+            userObj[id]= name;
+            return userObj;
+        }, {});
+
+        const uplist = plist.map((post) => {
+            const newpost = {
+                username: userObj[post.userId],
+                ...post
+            };
+            
+            return newpost;
+        });
+
+        return uplist;
+    }
+
     render() {
         
-        const { loading } = this.state;
+        const { loading, userPostList } = this.state;
         const { container } = styles;
+
+        console.log('userPostList =======>');
+        console.log(userPostList)
 
         if (loading) {
             return <Loading />
@@ -58,11 +85,17 @@ class Posts extends Component {
 
         return (
             <View>
-                <PostItem />
-                <PostItem />
-                <PostItem />
-                <PostItem />
-                <PostItem />
+                <FlatList
+                    keyExtractor={item => item.id}
+                    data={userPostList}
+                    renderItem={({item}) => 
+                        <PostItem 
+                            username={item.username}
+                            title={item.title}
+                            content={item.body}
+                        />
+                    }
+                />
             </View>
         );
     }

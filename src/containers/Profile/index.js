@@ -103,7 +103,7 @@ class Profile extends Component {
                 <View style={separatorStyle} />
                 <Animated.View style={[userInfoStyle, { height: this.state.animation }]}>
                     {this.state.showMore ?
-                        <View>
+                        <View style={{ paddingHorizontal: 20}}>
                             <SocialButton name="envelope" textColor={darkGrey} btnTxt={email} btnColor={pureWhite} size={20} disabled />
                             <View style={{marginVertical: 2}} />
                             <SocialButton name="phone" textColor={darkGrey} btnTxt={phone} btnColor={pureWhite} size={20}  disabled/>

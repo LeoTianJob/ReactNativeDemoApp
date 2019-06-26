@@ -6,14 +6,36 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import styles from './styles';
 import { etonBlue } from '../../styles/colors';
 
-const socialButton = ({ name, size, btnTxt, onClick, textColor, btnColor, disabled, height }) => {
+const socialButton = ({ name,
+    size,
+    btnTxt,
+    onClick,
+    textColor,
+    btnColor,
+    disabled,
+    height,
+    containerStyle
+}) => {
     const { container } = styles;
     return (
         <TouchableOpacity onPress={onClick}
-             style={[container, { backgroundColor: btnColor, borderWidth: 1, borderColor: textColor, height }]} 
-             disabled={disabled}>
-            <Icon name={name} size={size} color={textColor} style={{ marginVertical: 5, marginHorizontal: 2 }}/>
-            <Text style={{ color: textColor, marginVertical: 5, marginHorizontal: 2 }}>{btnTxt}</Text>
+            style={[container, {
+                backgroundColor: btnColor,
+                borderWidth: 1,
+                borderColor: textColor,
+                height
+            },
+                containerStyle
+            ]}
+            disabled={disabled}>
+            <Icon name={name} size={size} color={textColor} />
+            <Text
+                style={{ color: textColor, marginLeft: size / 2, fontSize: size * 3 / 4 }}
+                selectable
+                ellipsizeMode="tail"
+            >
+                {btnTxt}
+            </Text>
         </TouchableOpacity>
     );
 }
@@ -25,7 +47,8 @@ socialButton.propTypes = {
     onClick: PropTypes.func,
     btnColor: PropTypes.string,
     disabled: PropTypes.bool,
-    height: PropTypes.number
+    height: PropTypes.number,
+    containerStyle: PropTypes.object
 }
 
 socialButton.defaultProps = {
@@ -35,7 +58,8 @@ socialButton.defaultProps = {
     onClick: () => { },
     btnColor: etonBlue,
     disabled: false,
-    height: 25 * 2
+    height: 25 * 2,
+    containerStyle: {}
 }
 
 export default socialButton;
