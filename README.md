@@ -7,7 +7,7 @@
 3. [Installation](#Installation)
 4. [Code Features](#Code-Features)
 5. [App Functions](#App-Functions)
-6. [Optimizations (TODO)](#Other-Optimizations-(TODO))
+6. [Optimizations (TODO)](#Other-Optimizations-\(TODO\))
 
 ## Introduction
 
