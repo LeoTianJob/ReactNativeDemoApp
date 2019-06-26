@@ -35,9 +35,8 @@ export default StyleSheet.create({
     removeLineStyle: {
         position: 'absolute',
         height: StyleSheet.hairlineWidth,
-        width: Dimensions.get('window').width,
-        borderWidth: 0.5,
-        borderColor: pureBlack,
+        width: Dimensions.get('window').width - 10,
+        backgroundColor: pureBlack,
         top: ITEM_HEIGHT / 2
     }
 });
