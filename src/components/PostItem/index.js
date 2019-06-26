@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
 import Avatar from '../Avatar';
@@ -8,7 +8,7 @@ import SocialButton from '../SocialButton';
 import styles from './styles';
 import { darkGrey, pureWhite } from '../../styles/colors';
 
-const postItem = ({ avatarUri, username, title, content }) => {
+const postItem = ({ avatarUri, username, title, content, onClick }) => {
 
     const {
         container,
@@ -22,7 +22,7 @@ const postItem = ({ avatarUri, username, title, content }) => {
     } = styles;
 
     return (
-        <View style={container}>
+        <TouchableOpacity style={container} onPress={onClick} activeOpacity={0.8}>
             <View style={avatarContainerStyle}>
                 <Avatar imgUri={avatarUri} />
                 <Text style={usernameStyle}>{username}</Text>
@@ -74,7 +74,7 @@ const postItem = ({ avatarUri, username, title, content }) => {
                         }} />
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 }
 
@@ -82,14 +82,16 @@ postItem.propTypes = {
     username: PropTypes.string,
     avatarUrl: PropTypes.string,
     title: PropTypes.string,
-    content: PropTypes.string
+    content: PropTypes.string,
+    onClick: PropTypes.func
 }
 
 postItem.defaultProps = {
     username: 'User Name',
     avatarUrl: null,
     title: 'Post Title',
-    content: 'Post Content'
+    content: 'Post Content',
+    onClick: () => {}
 }
 
 export default postItem;

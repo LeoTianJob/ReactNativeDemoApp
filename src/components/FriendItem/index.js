@@ -11,7 +11,7 @@ const friendItem = ({ name, website, onClick }) => {
     const { container, userInfoStyle, itemStyle } = styles;
 
     return (
-        <TouchableOpacity style={container} onPress={onClick} >
+        <TouchableOpacity style={container} onPress={onClick} activeOpacity={0.8} >
             <Avatar /> 
             <View style={userInfoStyle}>
                 <Text style={[itemStyle, {fontWeight: '600'}]}>{name}</Text>

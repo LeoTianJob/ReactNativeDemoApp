@@ -19,6 +19,7 @@ const socialButton = ({ name,
     const { container } = styles;
     return (
         <TouchableOpacity onPress={onClick}
+            activeOpacity={0.8}
             style={[container, {
                 backgroundColor: btnColor,
                 borderWidth: 1,

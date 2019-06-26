@@ -20,8 +20,8 @@ class Posts extends Component {
     }
 
     componentDidMount() {
-        
-        this.setState({loading: true});
+
+        this.setState({ loading: true });
 
         Promise.all([
             axios.get('/posts'),
@@ -37,10 +37,10 @@ class Posts extends Component {
             this.setState({
                 userPostList,
                 allUsers,
-                loading: false 
+                loading: false
             });
 
-        }).catch(err => {  
+        }).catch(err => {
             Alert.alert(
                 'ERROR',
                 err,
@@ -54,8 +54,8 @@ class Posts extends Component {
 
     getUserPostList = (ulist, plist) => {
         userObj = ulist.reduce((userObj, user) => {
-            const { id, name} = user;
-            userObj[id]= name;
+            const { id, name } = user;
+            userObj[id] = name;
             return userObj;
         }, {});
 
@@ -64,7 +64,7 @@ class Posts extends Component {
                 username: userObj[post.userId],
                 ...post
             };
-            
+
             return newpost;
         });
 
@@ -72,7 +72,7 @@ class Posts extends Component {
     }
 
     render() {
-        
+
         const { loading, userPostList } = this.state;
         const { container } = styles;
 
@@ -86,15 +86,17 @@ class Posts extends Component {
         return (
             <View>
                 <FlatList
-                    keyExtractor={item => item.id}
+                    keyExtractor={item => item.id.toString()}
                     data={userPostList}
-                    renderItem={({item}) => 
-                        <PostItem 
+                    renderItem={({ item }) =>
+                        <PostItem
                             username={item.username}
                             title={item.title}
                             content={item.body}
-                        />
-                    }
+                        />}
+                    ListFooterComponent={this.state.isloading ? <Loading size="small" /> : null}
+                    onEndReachedThreshold={0.4}
+                    onEndReached={() => {}}
                 />
             </View>
         );

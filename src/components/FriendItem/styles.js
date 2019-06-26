@@ -4,7 +4,7 @@ import { defaultFont } from '../../styles/fonts';
 
 export default StyleSheet.create({
     container: {
-        height: 100,
+        minHeight: 100,
         flexDirection: 'row',
         padding: 15,
         marginHorizontal: 15,
