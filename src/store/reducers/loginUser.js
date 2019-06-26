@@ -15,8 +15,8 @@ const initState = {
         name: "",
         username: "",
         email: "",
-        url: "",
-        thumbnailUrl: "",
+        url: null,
+        thumbnailUrl: null,
         address: {
             street: null,
             suite: null,

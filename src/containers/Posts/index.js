@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import PostItem from '../../components/PostItem';
+
 import styles from './styles';
 class Posts extends Component {
     render() {
@@ -9,7 +11,7 @@ class Posts extends Component {
 
         return (
             <View>
-                <Text> This is Posts page</Text>
+                <PostItem />
             </View>
         );
     }
