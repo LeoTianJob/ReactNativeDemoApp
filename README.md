@@ -95,7 +95,7 @@ react-native run-ios
 The below features are mainly shown in the code:
 
 1. How to structure a react-native project. (folder & files hirearchy)
-2. How to write UI stateless component.
+2. How to write reusable & maintainable stateless component.
 3. How to write stateful component to handle app logic.
 4. How to write HOC container.
 5. How to use [`react-native-navigation`](https://wix.github.io/react-native-navigation/#/). (This is my first time to use `react-native-navigation`, I used to use [`react-navigation`](https://reactnavigation.org) to implement the navigation.)
@@ -167,9 +167,10 @@ Because of the time limitation, the app can still be improved in the future.
 **TODO:**
 
 - [ ] **[Improvement]** Make app run on the android emulator/phones.
-- [ ] **[Improvement]** Create DEV/UAT/PRD environment for development.
+- [ ] **[Improvement]** Create `DEV`|`UAT`|`PRD` environment for development.
 - [ ] **[Improvement]** Use HOC (like withErrorHandler) to handler the errors of http response.
 - [ ] **[Improvement]** Check all `componentWillUnmount()` functions when one component get destroyed.
+- [ ] **[Improvement]** Make colors and reusable components more independent, so that some featured components can be written as library.
 - [ ] **[Improvement]**  Fix warning:
 
     ```
