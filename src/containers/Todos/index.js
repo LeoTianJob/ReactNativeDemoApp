@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import { Text, View, ActivityIndicator, FlatList, ScrollView } from 'react-native';
 
 import TodoItem from '../../components/TodoItem';
+import Loading from '../../components/Loading';
 
 import { getUserTodoItems } from '../../store/actions';
 
 import styles from './styles';
-import { americanGreen } from '../../styles/colors';
+import TextInputBar from '../../components/TextInputBar';
+import { pureWhite } from '../../styles/colors';
 class Todos extends Component {
 
     componentDidMount() {
@@ -21,7 +23,7 @@ class Todos extends Component {
         const { userTodo: { todoList, loading } } = this.props;
 
         if (loading) {
-            return <ActivityIndicator size="large" color={americanGreen} />
+            return <Loading />
         } else {
             
             const completedTodo = [];
@@ -32,6 +34,7 @@ class Todos extends Component {
 
             return (
                 <View style={container}>
+                    <TextInputBar iconColor={pureWhite} leftIconName="plus-square-o" rightIconName="search" />
                     <FlatList
                         keyExtractor={ item => item.id.toString()}
                         data={data}
