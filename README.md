@@ -109,6 +109,8 @@ The below features are mainly shown in the code:
 
 *NOTE: For fast development and saving time purpose, the UI design currently is only tested on iPhone X since I hardcoded some UI values in the styles file. Please choose iPhone X simulator for the better effect.*
 
+*NOTE: The image and gif files could be blocked by some companies' network. If so, you can try to use cellular data instead.*
+
 ### Home Page
 
 List 5 Tabs for the app. (Tab Navigator)
