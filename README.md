@@ -121,7 +121,7 @@ List 5 Tabs for the app. (Tab Navigator)
 * Todos
 * Profile
 
-![HomePage](/resources/HomePage.png)
+![HomePage](/examples/HomePage.png)
 
 ### Posts
 
@@ -131,14 +131,14 @@ List 5 Tabs for the app. (Tab Navigator)
 4. Clicking one post can navigate the app to post details page. (Stack Navigator)
 5. Post content and comments can be listed in post details page.
 
-![Posts](https://github.com/LeoTianJob/SCBDemoApp/blob/master/resources/Posts.gif)
+![Posts](/examples/Posts.gif)
 
 ### Friends
 
 1. List all users.
 2. Clicking one user widget can navigate app to profile page and show selected user's information. (Stack Navigator)
 
-![Friends](https://github.com/LeoTianJob/SCBDemoApp/blob/master/resources/Friends.gif)
+![Friends](/examples/Friends.gif)
 
 ### Albums
 
@@ -146,7 +146,7 @@ List 5 Tabs for the app. (Tab Navigator)
 2. Click one album widget can navigate app to album detail page and show all the album photos. (Stack Navigator)
 3. Clicking on photo in the album can show the photo details. (Modal Navigator)
 
-![Albums](https://github.com/LeoTianJob/SCBDemoApp/blob/master/resources/Albums.gif)
+![Albums](/examples/Albums.gif)
 
 ### Todos
 
@@ -154,7 +154,7 @@ List 5 Tabs for the app. (Tab Navigator)
 2. Sort the todo items by completed or not.
 3. Show a removed line for these completed todos.
 
-![Todos](https://github.com/LeoTianJob/SCBDemoApp/blob/master/resources/Todos.gif)
+![Todos](/examples/Todos.gif)
 
 ### Profile
 
@@ -162,7 +162,7 @@ List 5 Tabs for the app. (Tab Navigator)
 2. Create a good-look profile avatar component.
 3. Use basic animation to show user's information by clicking button.
 
-![Profile](https://github.com/LeoTianJob/SCBDemoApp/blob/master/resources/Profile.gif)
+![Profile](/examples/Profile.gif)
 
 ## Optimizations
 
