@@ -103,13 +103,13 @@ The below features are mainly shown in the code:
 7. How to use `redux` in react-native app. (Todos & Profile)
 8. How to mix-use local `state` and `redux`. (Albums)
 9. How to use [`axios`](https://github.com/axios/axios) to do http request.
-10. How to write Basic UI styles.
+10. How to write Basic UI styles. (**Only tested on iPhone X for now**)
 
 ## App Functions
 
 *NOTE: For fast development and saving time purpose, the UI design currently is only tested on iPhone X since I hardcoded some UI values in the styles file. Please choose iPhone X simulator for the better effect.*
 
-*NOTE: The image and gif files could be blocked by some companies' network. If so, you can try to use cellular data instead.*
+*NOTE: The image and gif files below could be blocked by some companies' network. If so, you can try to use cellular data instead.*
 
 ### Home Page
 
