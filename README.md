@@ -121,7 +121,7 @@ List 5 Tabs for the app. (Tab Navigator)
 * Todos
 * Profile
 
-![HomePage](https://github.com/LeoTianJob/SCBDemoApp/blob/master/resources/HomePage.png)
+![HomePage](/resources/HomePage.png)
 
 ### Posts
 
