@@ -107,6 +107,8 @@ The below features are mainly shown in the code:
 
 ## App Functions
 
+*NOTE: For fast development and saving time purpose, the UI design currently is only tested on iPhone X since I hardcoded some UI values in the styles file. Please choose iPhone X simulator for the better effect.*
+
 ### Home Page
 
 List 5 Tabs for the app. (Tab Navigator)
@@ -167,6 +169,8 @@ Because of the time limitation, the app can still be improved in the future.
 **TODO:**
 
 - [ ] **[Improvement]** Make app run on the android emulator/phones.
+- [ ] **[Improvement]** Support multiple device screen sizes.
+- [ ] **[Improvement]** Separate navigation component into diiferent files for reusability.
 - [ ] **[Improvement]** Create `DEV`|`UAT`|`PRD` environment for development.
 - [ ] **[Improvement]** Use HOC (like withErrorHandler) to handler the errors of http response.
 - [ ] **[Improvement]** Check all `componentWillUnmount()` functions when one component get destroyed.
