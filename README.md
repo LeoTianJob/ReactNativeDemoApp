@@ -1,4 +1,4 @@
-# SCB Demo App
+# React-Native Demo App
 
 ## 0. Content
 
